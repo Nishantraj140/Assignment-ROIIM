@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Custom styles for this template -->
+    <link href="/static/style_one.css" rel="stylesheet">
+    <script src="https://hosted.paysafe.com/checkout/v2/paysafe.checkout.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body class="bg-light">
+<div class="container">
+    <a class="nav-link col-3 col-md-3 col-xs-3" href="/register">Register</a>
+    <a class="nav-link col-3 col-md-3 col-xs-3" href="/login">Login</a>
+    <a class="nav-link col-3 col-md-3 col-xs-3" href="/client">Dashboard</a>
+    <a class="nav-link col-3 col-md-3 col-xs-3" href="/client/logout">Logout</a>
+    </br>
+    <div class="card bg-white box-shadow text-capitalize">
+        <div class="card-body pb-02 pt-02 ml-05 mr-05">
+            <h3 class="card-subtitle text-capitalize">Profile</h3>
+            <h4>Hi, {{ .FirstName}}</h4>
+            </br>
+            {{if .Profile}}
+                <p>Please fill the following details to create a profile with our payment gateway</p>
+                <form action="/client/profile" method="post">
+                    <div class="form-row">
+                        <div class="col-2 col-md-2 col-xs-2 mb-3">
+                            <p>BirthYear</p>
+                            <select class="form-control" name="year" id="year">
+                                <option value="1990">1990</option>
+                                <option value="1991">1991</option>
+                                <option value="1992">1992</option>
+                                <option value="1993">1993</option>
+                                <option value="1994">1994</option>
+                                <option value="1995">1995</option>
+                                <option value="1996">1996</option>
+                                <option value="1997">1997</option>
+                                <option value="1998">1998</option>
+                                <option value="1999">1999</option>
+                                <option value="2000">2000</option>
+                                <option value="2001">2001</option>
+                                <option value="2002">2002</option>
+                                <option value="2003">2003</option>
+                            </select>
+                        </div>
+                        <div class="col-2 col-md-2 col-xs-2 mb-3">
+                            <p>BirthMonth</p>
+                            <select class="form-control" name="month" id="month">
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </div>
+                        <div class="col-2 col-md-2 col-xs-2 mb-3">
+                            <p>BirthDay</p>
+                            <select class="form-control" name="day" id="day">
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                            </select>
+                        </div>
+                        <div class="col-2 col-md-2 col-xs-2 mb-3">
+                            <p>Gender</p>
+                            <select class="form-control" name="gender" id="gender">
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                            </select>
+                        </div>
+                        <div class="col-2 col-md-2 col-xs-2 mb-3">
+                            <p>nickName</p>
+                            <input type="text" class="form-control" name="nickName" placeholder="nickName" value="Home">
+                        </div>
+                        <div class="col-2 col-md-2 col-xs-2 mb-3">
+                            <p>Street</p>
+                            <input type="text" class="form-control" name="street" placeholder="street" value="100 Queen">
+                        </div>
+
+                        <div class="col-2 col-md-2 col-xs-2 mb-3">
+                            <p>City</p>
+                            <input type="text" class="form-control" name="city" placeholder="city" value="Toronto">
+                        </div>
+                        <div class="col-2 col-md-2 col-xs-2 mb-3">
+                            <p>Zip</p>
+                            <input type="text" class="form-control" name="zip" placeholder="zip" value="M5H 2N2">
+                        </div>
+                        <div class="col-2 col-md-2 col-xs-2 mb-3">
+                            <p>State</p>
+                            <input type="text" class="form-control" name="state" placeholder="state" value="ON">
+                        </div>
+                        <div class="col-2 col-md-2 col-xs-2 mb-3">
+                            <p>Country</p>
+                            <select class="form-control" name="country" id="country">
+                                <option value="CA">CA</option>
+                                <option value="US">US</option>
+                            </select>
+                        </div>
+                        <div class="col-2 col-md-2 col-xs-2">
+                            <p>Submit</p>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                    </div>
+                </form>
+            {{else}}
+                <p>Your profile is registered with our payment gateway</p>
+            {{end}}
+
+        </div>
+    </div>
+    <br>
+    {{/*    <div class="card  bg-white box-shadow">*/}}
+    {{/*        <div class="card-body pb-02 pt-02 ml-05 mr-05">*/}}
+    {{/*            <h3 class="card-subtitle text-capitalize">Card</h3>*/}}
+    {{/*            {{ with .Cards }}*/}}
+    {{/*            {{ range . }}*/}}
+    {{/*            <div class="row ml-05">*/}}
+    {{/*                </br>*/}}
+    {{/*                <div class="col-3 col-md-3 col-xs-3"><h5>Status: {{ .Status }}</h5></div>*/}}
+    {{/*                <div class="col-3 col-md-3 col-xs-3"><h5>Card Holder: {{ .Usage }}</h5></div>*/}}
+    {{/*                <div class="col-3 col-md-3 col-xs-3"><h5>Last 4 digit: {{ .Card.LastDigits }}</h5></div>*/}}
+    {{/*            </div>*/}}
+    {{/*            {{ end }}*/}}
+    {{/*            {{ end }}*/}}
+    {{/*            <br>*/}}
+    {{/*            <br>*/}}
+    {{/*        </div>*/}}
+    {{/*        <br>*/}}
+    {{/*    </div>*/}}
+    {{/*    </br>*/}}
+
+    <div class="card  bg-white box-shadow">
+        <div class="card-body pb-02 pt-02 ml-05 mr-05">
+            <h3 class="card-subtitle text-capitalize">Pay Now</h3>
+            <div class="col-2 col-md-2 col-xs-2 mb-3">
+                <input id="amount" type="text" class="form-control" name="country" placeholder="amount">
+            </div>
+            <div class="custom-select col-2 col-md-2 col-xs-2 mb-3">
+                <select class="form-control" name="currency" id="currency">
+                    <option value="USD">USD</option>
+                </select>
+            </div>
+            <div class="col-2 col-md-2 col-xs-2">
+                <button type="submit" class="btn btn-primary" onclick="checkout()">Pay</button>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+    <br>
+    <br>
+    <p>Use card from here - <a href="https://developer.paysafe.com/en/payments/api/#/introduction/testing-instructions/applying-for-a-test-account">here</a> only as paysafe is verifying card details</p>
+    <p>Use valid birthday and card expiry - otherwise it will through an invalid error</p>
+    <p>Use the default address details unless you know about the address pattern</p>
+</div>
+</body>
+<script type="text/javascript">
+    function checkout() {
+        console.log(document.getElementById("amount").value);
+        console.log(document.getElementById("currency").value);
+        let am = 1000;
+        am = document.getElementById("amount").value;
+        let cu = "USD";
+        cu = document.getElementById("currency").value;
+        paysafe.checkout.setup("cHVibGljLTc3NTE6Qi1xYTItMC01ZjAzMWNiZS0wLTMwMmQwMjE1MDA4OTBlZjI2MjI5NjU2M2FjY2QxY2I0YWFiNzkwMzIzZDJmZDU3MGQzMDIxNDUxMGJjZGFjZGFhNGYwM2Y1OTQ3N2VlZjEzZjJhZjVhZDEzZTMwNDQ=", {
+            "currency": cu,
+            "amount": 100*parseInt(am) ,
+            "locale": {{ .SToken.Locale}},
+            "customer": {
+                "firstName": {{ .SToken.FirstName}},
+                "lastName": {{ .SToken.LastName}},
+                "email": {{ .SToken.Email}},
+                "phone": {{ .SToken.Phone}},
+                "dateOfBirth": {
+                    "day": {{ .SToken.DateOfBirth.Day}},
+                    "month": {{ .SToken.DateOfBirth.Month}},
+                    "year": {{ .SToken.DateOfBirth.Year}}
+                }
+            },
+            "billingAddress": {
+                "nickName": {{ .Addr.NickName}},
+                "street": {{ .Addr.Street}},
+                "street2": {{ .Addr.Street2}},
+                "city": {{ .Addr.City}},
+                "zip": {{ .Addr.Zip}},
+                "country": {{ .Addr.Country}},
+                "state": {{ .Addr.State}}
+            },
+            "singleUseCustomerToken" : {{ .SToken.SingleUseCustomerToken}},
+            "environment": "TEST",
+            "merchantRefNum": {{ .User.MerchantCustomerId}},
+            "canEditAmount": false,
+            "merchantDescriptor": {
+                "dynamicDescriptor": "XYZ",
+                "phone": "1234567890"
+            },
+            "displayPaymentMethods":["card"],
+            "paymentMethodDetails": {
+                "paysafecard": {
+                    "consumerId": {{ .SToken.CustomerId}}
+                },
+            }
+        }, function(instance, error, result) {
+            console.log(result);
+            if (result && result.paymentHandleToken) {
+                // make AJAX call to Payments API
+                $.ajax({
+                    type: "POST",
+                    url: "/client/pay",
+                    contentType: "application/json",
+                    data: JSON.stringify({'paymentHandleToken': result.paymentHandleToken,'amount':result.amount, 'currencyCode':cu},),
+                    success: (data) =>{
+
+                        console.log(data);
+                        console.log("logging data", JSON.stringify(data));
+                        console.log(data.data)
+
+                        if(data.data.status==="COMPLETED"){
+                            instance.showSuccessScreen("Payment Successful!");
+                            setTimeout(function(){
+                                window.location = "/client";
+                            },2000);
+                        }
+                        else{
+                            console.log("data");
+                            console.log(data.error);
+                            console.log(data);
+                            instance.showFailureScreen("Payment was declined. lalal.");
+                            setTimeout(function(){
+                                window.location = "/client";
+                            },2000);
+                        }
+                    }
+                });
+            } else {
+                console.error(error);
+                // Handle the error
+                alert(JSON.stringify(error));
+                // setTimeout(function(){
+                //     window.location = "/client";
+                // },2000);
+            }
+        }, function(stage, expired) {
+            console.log("staging");
+            console.log(stage, expired);
+            switch(stage) {
+                case "PAYMENT_HANDLE_NOT_CREATED": // Handle the scenario
+                case "PAYMENT_HANDLE_CREATED": // Handle the scenario
+                case "PAYMENT_HANDLE_REDIRECT": // Handle the scenario
+                case "PAYMENT_HANDLE_PAYABLE": // Handle the scenario
+                default: // Handle the scenario
+            }
+        });
+    }
+</script>
+</html>
