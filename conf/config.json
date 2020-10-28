@@ -1,0 +1,13 @@
+{
+  "common": {
+    "api_secret": "Basic cHJpdmF0ZS03NzUxOkItcWEyLTAtNWYwMzFjZGQtMC0zMDJkMDIxNDQ5NmJlODQ3MzJhMDFmNjkwMjY4ZDNiOGViNzJlNWI4Y2NmOTRlMjIwMjE1MDA4NTkxMzExN2YyZTFhODUzMTUwNWVlOGNjZmM4ZTk4ZGYzY2YxNzQ4",
+    "server_port": "8050",
+    "account_id": "1001750470"
+  },
+  "db": {
+    "url": "",
+    "username": "paymentroiim",
+    "password": "1re12me@100",
+    "database": "payment"
+  }
+}
